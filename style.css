@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #8fa4c9, #6f8fb7);
+  min-height: 100vh;
+  padding: 30px;
+  color: #333;
+}
+
+/* MAIN CONTAINER */
+
+.container h1 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/*  DASHBOARD LAYOUT*/
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* CARD STYLE*/
+
+.form-section,
+.events-section,
+.demo-section {
+  background: #f4f4f6;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.form-section h2,
+.events-section h2,
+.demo-section h2 {
+  color: #6b79c9;
+  margin-bottom: 15px;
+}
+
+/*  FORM STYLING*/
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #6b79c9;
+  box-shadow: 0 0 5px rgba(107, 121, 201, 0.3);
+}
+
+/*  BUTTONS*/
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  background: linear-gradient(to right, #6b79c9, #7e57c2);
+  color: rgb(250, 248, 248);
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Controls buttons */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* 
+   EVENTS AREA*/
+
+#eventContainer {
+  min-height: 100px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Event Card (for JS generated cards) */
+.event-card {
+  background: linear-gradient(135deg, #e9ebf3, #d8dbe7);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.event-card h3 {
+  margin-bottom: 5px;
+}
+
+.event-card p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.event-category {
+  display: inline-block;
+  background: #6b79c9;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* Delete Button */
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b6b;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background: #ff4c4c;
+}
+
+/*  DEMO SECTION*/
+
+.demo-section {
+  margin-top: 20px;
+}
+
+.demo-box {
+  background: #e9e9ef;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.demo-content {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/*rESPONSIVE */
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+}
