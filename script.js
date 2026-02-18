@@ -1,18 +1,14 @@
-// target the form 
-// taarget the button 
+let form = document.querySelector("#eventForm");
+let titleInput = document.querySelector("#eventTitle");
+let dateInput = document.querySelector("#eventDate");
+let categoryInput = document.querySelector("#eventCategory");
+let descInput = document.querySelector("#eventDescription");
 
-const eventForm = document.getElementById("eventForm");
-const eventTitle = document.getElementById("eventTitle");
-const eventDate = document.getElementById("eventDate");
-const eventCategory = document.getElementById("eventCategory");
-const eventDescription = document.getElementById("eventDescription");
+let clearBtn = document.querySelector("#clearAllBtn");
+let sampleBtn = document.querySelector("#addSampleBtn");
+let container = document.querySelector("#eventContainer");
 
-const clearAllBtn = document.getElementById("clearAllBtn");
-const addSampleBtn = document.getElementById("addSampleBtn");
-const eventContainer = document.getElementById("eventContainer");
-
-// sample event data
-let sampleEvent = [
+let demoEvents = [
     {
         title: "Web development",
         date: "02-11-2026",
@@ -27,101 +23,95 @@ let sampleEvent = [
     }
 ];
 
-//   create event card  
-function createEventCard(eventData) {
-    const card = document.createElement("div");
-    card.className = "event-card";
+function makeCard(data) {
 
-    card.innerHTML = `
-    <button class="delete-btn">X</button>
-    <h3>${eventData.title}</h3>
-    <div>${eventData.date}</div>
-    <span>${eventData.category}</span>
-    <p>${eventData.description}</p>
-    `;
+    let card = document.createElement("div");
+    card.classList.add("event-card");
+
+    let delBtn = document.createElement("button");
+    delBtn.innerText = "X";
+    delBtn.classList.add("delete-btn");
+
+    let heading = document.createElement("h3");
+    heading.innerText = data.title;
+
+    let date = document.createElement("div");
+    date.innerText = data.date;
+
+    let category = document.createElement("span");
+    category.innerText = data.category;
+
+    let para = document.createElement("p");
+    para.innerText = data.description;
+
+    card.appendChild(delBtn);
+    card.appendChild(heading);
+    card.appendChild(date);
+    card.appendChild(category);
+    card.appendChild(para);
 
     return card;
 }
 
-// show empty state if there is no event 
-function showEmptyState() {
-    const emptyState = document.querySelector(".empty-state");
-    if (emptyState) emptyState.remove();
-
-    const emptyDiv = document.createElement("div");
-    emptyDiv.className = "empty-state";
-    emptyDiv.textContent = "No events to display";
-    eventContainer.appendChild(emptyDiv);
+function showMessage() {
+    if (container.children.length === 0) {
+        let msg = document.createElement("div");
+        msg.className = "empty-state";
+        msg.innerText = "No events to display";
+        container.appendChild(msg);
+    }
 }
 
-// remove empty state
-function removeEmptyState() {
-    const emptyState = document.querySelector(".empty-state");
-    if (emptyState) emptyState.remove();
+function removeMessage() {
+    let msg = container.querySelector(".empty-state");
+    if (msg) {
+        msg.remove();
+    }
 }
 
-// add an event to my events list 
-function addEvent(eventData) {
-    removeEmptyState();
-    const card = createEventCard(eventData);
-    eventContainer.appendChild(card);
+function addNewEvent(obj) {
+    removeMessage();
+    let newCard = makeCard(obj);
+    container.appendChild(newCard);
 }
 
-// form submit 
-eventForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const eventData = {
-        title: eventTitle.value,
-        date: eventDate.value,
-        category: eventCategory.value,
-        description: eventDescription.value
+    let obj = {
+        title: titleInput.value,
+        date: dateInput.value,
+        category: categoryInput.value,
+        description: descInput.value
     };
 
-    addEvent(eventData);
-    eventForm.reset();
+    addNewEvent(obj);
+    form.reset();
 });
 
-// keyboard event
-eventDescription.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        event.preventDefault();
-
-        const eventData = {
-            title: eventTitle.value,
-            date: eventDate.value,
-            category: eventCategory.value,
-            description: eventDescription.value
-        };
-
-        addEvent(eventData);
-        eventForm.reset();
+descInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        form.dispatchEvent(new Event("submit"));
     }
 });
 
-// clear all events 
-clearAllBtn.addEventListener("click", () => {
-    eventContainer.innerHTML = "";
-    showEmptyState();
+clearBtn.addEventListener("click", function () {
+    container.innerHTML = "";
+    showMessage();
 });
 
-// add sampleEvent
-addSampleBtn.addEventListener("click", () => {
-    sampleEvent.forEach(event => {
-        addEvent(event);
+sampleBtn.addEventListener("click", function () {
+    demoEvents.forEach(function (item) {
+        addNewEvent(item);
     });
 });
 
-// delete individual event using X button
-eventContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("delete-btn")) {
-        event.target.parentElement.remove();
-
-        if (eventContainer.children.length === 0) {
-            showEmptyState();
-        }
+container.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-btn")) {
+        e.target.parentElement.remove();
+        showMessage();
     }
 });
 
-// show empty state initially
-showEmptyState();
+showMessage();

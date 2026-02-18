@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Event Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Dashboard</title>
-
-    
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,31 +21,23 @@
 
             <form id="eventForm">
 
-                <div class="form-group">
-                    <label for="eventTitle">Event Title :</label>
-                    <input type="text" id="eventTitle" required>
-                </div>
+                <label>Event Title :</label>
+                <input type="text" id="eventTitle" required>
 
-                <div class="form-group">
-                    <label for="eventDate">Event Date :</label>
-                    <input type="date" id="eventDate" required>
-                </div>
+                <label>Event Date :</label>
+                <input type="date" id="eventDate" required>
 
-                <div class="form-group">
-                    <label for="eventCategory">Category :</label>
-                    <select id="eventCategory" required>
-                        <option value="Conference">Conference</option>
-                        <option value="Workshop">Workshop</option>
-                        <option value="Meetup">Meetup</option>
-                        <option value="Webinar">Webinar</option>
-                        <option value="Social">Social</option>
-                    </select>
-                </div>
+                <label>Category :</label>
+                <select id="eventCategory">
+                    <option>Conference</option>
+                    <option>Workshop</option>
+                    <option>Meetup</option>
+                    <option>Webinar</option>
+                    <option>Social</option>
+                </select>
 
-                <div class="form-group">
-                    <label for="eventDescription">Description :</label>
-                    <textarea id="eventDescription" required></textarea>
-                </div>
+                <label>Description :</label>
+                <textarea id="eventDescription"></textarea>
 
                 <button type="submit">Add Event</button>
 
@@ -68,6 +58,7 @@
                     No events yet. Add your first event!
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -75,9 +66,8 @@
     
     <div class="demo-section">
         <h2>DOM Manipulation Demo</h2>
-
         <div class="demo-box">
-            <div id="demoContent" class="demo-content">
+            <div id="demoContent">
                 Press any key to see the difference!
             </div>
         </div>
