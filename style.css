@@ -6,13 +6,14 @@
 }
 
 body {
-  background: linear-gradient(135deg, #8fa4c9, #6f8fb7);
+  background-image: linear-gradient(to right,
+      rgb(173, 173, 244),
+      rgb(109, 123, 253));
   min-height: 100vh;
   padding: 30px;
   color: #333;
 }
 
-/* MAIN CONTAINER */
 
 .container h1 {
   text-align: center;
@@ -22,7 +23,6 @@ body {
   font-weight: 700;
 }
 
-/*  DASHBOARD LAYOUT*/
 
 .dashboard {
   display: grid;
@@ -31,7 +31,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* CARD STYLE*/
 
 .form-section,
 .events-section,
@@ -49,7 +48,6 @@ body {
   margin-bottom: 15px;
 }
 
-/*  FORM STYLING*/
 
 .form-group {
   margin-bottom: 15px;
@@ -85,7 +83,6 @@ textarea:focus {
   box-shadow: 0 0 5px rgba(107, 121, 201, 0.3);
 }
 
-/*  BUTTONS*/
 
 button {
   padding: 12px;
@@ -103,15 +100,14 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* Controls buttons */
+
 .controls {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-/* 
-   EVENTS AREA*/
+
 
 #eventContainer {
   min-height: 100px;
@@ -124,7 +120,7 @@ button:hover {
   padding: 20px;
 }
 
-/* Event Card (for JS generated cards) */
+
 .event-card {
   background: linear-gradient(135deg, #e9ebf3, #d8dbe7);
   padding: 15px;
@@ -152,7 +148,7 @@ button:hover {
   font-size: 12px;
 }
 
-/* Delete Button */
+
 .delete-btn {
   position: absolute;
   top: 10px;
@@ -168,7 +164,6 @@ button:hover {
   background: #ff4c4c;
 }
 
-/*  DEMO SECTION*/
 
 .demo-section {
   margin-top: 20px;
@@ -186,7 +181,7 @@ button:hover {
   line-height: 1.6;
 }
 
-/*rESPONSIVE */
+
 
 @media (max-width: 900px) {
   .dashboard {
